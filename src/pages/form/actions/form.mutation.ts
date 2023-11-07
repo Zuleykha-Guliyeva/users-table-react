@@ -13,10 +13,10 @@ export const useAddUser = () => {
   });
 };
 
-export const useUpdateUser = () => {
+export const useUpdateUser = (user_id: number) => {
   const queryClient = useQueryClient();
-  return useMutation( {
-    mutationFn: (user:any) => {
+  return useMutation({
+    mutationFn: (user: any) => {
       return updateUser(user);
     },
     onSuccess: () => {

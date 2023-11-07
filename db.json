@@ -1,41 +1,17 @@
 {
   "users": [
     {
-      "user_id": 9,
-      "name": "semaffff",
-      "email": "gghg@lff.vom",
-      "age": 35,
-      "id": 1
-    },
-    {
+      "user_id": 3,
       "name": "gunel",
       "email": "gghg@lff.vom",
-      "age": 20,
+      "age": "999",
       "id": 3
-    },
-    {
-      "name": "hjhjhj",
-      "email": "jyjyjyjjy@gmail.com",
-      "age": 20,
-      "id": 4
-    },
-    {
-      "name": "gunel",
-      "email": "gghg@lff.vom",
-      "age": 20,
-      "id": 5
     },
     {
       "name": "Bird Ramsey",
       "email": "birdramsey@nimon.com",
       "age": "25",
       "id": 6
-    },
-    {
-      "name": "gunel",
-      "email": "gghg@lff.vom",
-      "age": "15",
-      "id": 8
     },
     {
       "name": "sema",
@@ -60,6 +36,19 @@
       "email": "gghg@lff.vom",
       "age": "44",
       "id": 12
+    },
+    {
+      "user_id": 13,
+      "name": "ferd",
+      "email": "gghghgghg@lff.vom",
+      "age": "35",
+      "id": 13
+    },
+    {
+      "name": "bubuuuiuuub",
+      "email": "gghg@lff.vom",
+      "age": "8",
+      "id": 14
     }
   ]
 }

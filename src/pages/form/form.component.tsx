@@ -20,12 +20,7 @@ const FormComponent = () => {
     console.log("Failed:", errorInfo);
   };
   const [formData, setFormData] = useState<IFormValues>({ name, age, email });
-  const [valuesArr, setValuesArr] = useState<IFormValues[]>([]);
-  const initialValues: IFormValues = {
-    name: "",
-    email: "",
-    age: 20,
-  };
+
   const navigate = useNavigate();
   const addUser = useAddUser();
   const updateUser = useUpdateUser();
@@ -35,16 +30,13 @@ const FormComponent = () => {
       console.log(values);
 
       if (user_id) {
-        console.log(values);
-
         updateUser.mutate({ user_id, ...values });
       } else {
         addUser.mutate(values);
       }
-
       navigate("/users");
     },
-    [addUser, valuesArr]
+    [addUser, updateUser, user_id]
   );
 
   return (
