@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { Button, Form, Input } from "antd";
 import { IFormValues } from "./form";
-import { useAddUser } from "./actions/form.mutation";
+import { useAddUser, useUpdateUser } from "./actions/form.mutation";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const FormComponent = () => {
@@ -10,6 +10,9 @@ const FormComponent = () => {
   };
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
+  const user_id = parseInt(searchParams.get("id")) || 0;
+  console.log(user_id);
+
   const name = searchParams.get("name") || "";
   const age = parseInt(searchParams.get("age")) || 0;
   const email = searchParams.get("email") || "";
@@ -25,18 +28,21 @@ const FormComponent = () => {
   };
   const navigate = useNavigate();
   const addUser = useAddUser();
+  const updateUser = useUpdateUser();
 
   const onSubmit = useCallback(
     (values: IFormValues) => {
-      navigate("/users");
       console.log(values);
-      const prevValues = [...valuesArr];
-      const newValue = { ...values };
-      const updatedValuesArr = [...prevValues, newValue];
 
-      setValuesArr(updatedValuesArr);
+      if (user_id) {
+        console.log(values);
 
-      addUser.mutate(updatedValuesArr);
+        updateUser.mutate({ user_id, ...values });
+      } else {
+        addUser.mutate(values);
+      }
+
+      navigate("/users");
     },
     [addUser, valuesArr]
   );

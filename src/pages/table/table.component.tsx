@@ -56,7 +56,7 @@ function TableComponent() {
             <button>Details</button>
           </Link>
           <Link
-            to={`/form?name=${record.name}&age=${record.age}&email=${record.email}`}
+            to={`/form?id=${record.id}&name=${record.name}&age=${record.age}&email=${record.email}`}
           >
             <button>Update</button>
           </Link>
