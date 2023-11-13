@@ -1,18 +1,13 @@
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { Button, Form, Input } from "antd";
 import { IFormValues } from "./form";
 import { useAddUser, useUpdateUser } from "./actions/form.mutation";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const FormComponent = () => {
-  const onFinish = (values: any) => {
-    console.log("Success:", values);
-  };
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const user_id = parseInt(searchParams.get("id")) || 0;
-  console.log(user_id);
-
   const name = searchParams.get("name") || "";
   const age = parseInt(searchParams.get("age")) || 0;
   const email = searchParams.get("email") || "";
@@ -27,8 +22,6 @@ const FormComponent = () => {
 
   const onSubmit = useCallback(
     (values: IFormValues) => {
-      console.log(values);
-
       if (user_id) {
         updateUser.mutate({ user_id, ...values });
       } else {

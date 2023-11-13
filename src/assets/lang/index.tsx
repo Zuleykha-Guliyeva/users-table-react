@@ -2,7 +2,7 @@ import {renderToStaticMarkup} from 'react-dom/server';
 import {az} from './az';
 import {en} from './en';
 import {ru} from './ru';
-import {useStore} from 'store/store.config';
+import { useStore } from "../../store/store.config";
 
 const useLocalization = () => {
     const languages = useStore('locale');

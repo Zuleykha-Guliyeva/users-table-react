@@ -1,4 +1,4 @@
-import {ILang} from '../assets/lang/lang';
+import { ILang } from "..//assets/lang/lang";
 
 export interface IState {
     loader: boolean;

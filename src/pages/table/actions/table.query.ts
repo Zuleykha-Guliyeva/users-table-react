@@ -7,14 +7,8 @@ export const useUsers = () => {
     return getUsersService();
   });
 };
-
 export const usehandleDelete = () => {
-  // return useMutation((userId: number) => {
-  //     return deleteUserService(userId);
-  //   }
-  // );
   const queryClient = useQueryClient();
-
   return useMutation({
     mutationFn: (userId: number) => {
       return deleteUserService(userId);

@@ -4,6 +4,7 @@ const styles = {
   header: {
     position: "fixed",
     width: "100%",
+    padding:"15px",
     // height: "5%",
     display:"flex",
     alignItems:"center",

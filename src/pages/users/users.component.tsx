@@ -1,9 +1,7 @@
 import TableComponent from "../table/table.component";
 
 function UsersComponent() {
-  return (
-    <TableComponent/>
-  )
+  return <TableComponent />;
 }
 
 export default UsersComponent;

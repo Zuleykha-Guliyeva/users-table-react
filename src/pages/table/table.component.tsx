@@ -3,8 +3,7 @@ import type { ColumnsType } from "antd/es/table";
 import { generateGuid } from "../../core/helpers/generate-guid";
 import { useUsers, usehandleDelete } from "./actions/table.query";
 import { Link } from "react-router-dom";
-import { IFormValues } from "../form/form";
-import { useState } from "react";
+import useLocalization from "../../assets/lang";
 
 interface DataType {
   key: string;
@@ -15,33 +14,29 @@ interface DataType {
 }
 
 function TableComponent() {
-  const [formData, setFormData] = useState<IFormValues>({ name: "", age: 0, email: "" });
   const { data, isLoading } = useUsers();
   const { mutate } = usehandleDelete();
-  console.log(data);
-
   const handleDelete = (userId: number) => {
     mutate(userId);
   };
 
- 
-
   const addUser = () => {};
+  const translate = useLocalization();
 
   const columns: ColumnsType<DataType> = [
     {
-      title: "Name",
+      title: translate('table_name'),
       dataIndex: "name",
       key: "name",
       render: (text) => <a>{text}</a>,
     },
     {
-      title: "Age",
+      title: translate('table_age'),
       dataIndex: "age",
       key: "age",
     },
     {
-      title: "Email",
+      title: translate('table_email'),
       dataIndex: "email",
       key: "email",
     },
@@ -65,7 +60,6 @@ function TableComponent() {
       ),
     },
   ];
-  //() => {handleDelete(1)}
   return (
     <div>
       {isLoading ? (
