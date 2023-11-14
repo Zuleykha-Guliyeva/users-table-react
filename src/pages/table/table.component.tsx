@@ -20,23 +20,22 @@ function TableComponent() {
     mutate(userId);
   };
 
-  const addUser = () => {};
   const translate = useLocalization();
 
   const columns: ColumnsType<DataType> = [
     {
-      title: translate('table_name'),
+      title: translate("table_name"),
       dataIndex: "name",
       key: "name",
       render: (text) => <a>{text}</a>,
     },
     {
-      title: translate('table_age'),
+      title: translate("table_age"),
       dataIndex: "age",
       key: "age",
     },
     {
-      title: translate('table_email'),
+      title: translate("table_email"),
       dataIndex: "email",
       key: "email",
     },
@@ -45,17 +44,13 @@ function TableComponent() {
       key: "action",
       render: (_, record) => (
         <Space size="middle">
-          <Link
-            to={`/details?name=${record.name}&age=${record.age}&email=${record.email}`}
-          >
+          <Link to={`/details/${record?.id}`}>
             <button>Details</button>
           </Link>
-          <Link
-            to={`/form?id=${record.id}&name=${record.name}&age=${record.age}&email=${record.email}`}
-          >
+          <Link to={`/form?id=${record.id}`}>
             <button>Update</button>
           </Link>
-          <button onClick={() => handleDelete(record.id)}>Delete</button>
+          <button onClick={() => handleDelete(record?.id)}>Delete</button>
         </Space>
       ),
     },
@@ -66,8 +61,8 @@ function TableComponent() {
         <h1 style={{ color: "#000" }}>loading...</h1>
       ) : (
         <>
-          <Link to="/form">
-            <Button onClick={addUser} type="primary">
+          <Link to={`/form`}>
+            <Button type="primary">
               Add User
             </Button>
           </Link>

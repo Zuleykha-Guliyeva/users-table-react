@@ -1,13 +1,20 @@
 import { Card, Space } from "antd";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useDetail } from "./actions/detail.query";
 
 const DetailsComponents = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const name = searchParams.get("name") || "";
-  const age = parseInt(searchParams.get("age")) || 0;
-  const email = searchParams.get("email") || "";
+  const { id } = useParams();
+  const user_id = id ? parseInt(id) : undefined;
+  const { data, isLoading, isError } = useDetail(user_id);
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (isError) {
+    return <p>Error loading user details</p>;
+  }
   return (
     <>
       <Space direction="vertical" size={16}>
@@ -25,9 +32,9 @@ const DetailsComponents = () => {
           }
           style={{ width: 300 }}
         >
-          <p>adi: {name}</p>
-          <p>email: {email}</p>
-          <p>yasi: {age}</p>
+          <p>adi: {data.name}</p>
+          <p>email: {data.email}</p>
+          <p>yasi: {data.age}</p>
         </Card>
       </Space>
     </>

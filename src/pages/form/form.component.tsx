@@ -1,24 +1,35 @@
-import { useCallback, useState } from "react";
-import { Button, Form, Input } from "antd";
+import { useCallback, useEffect, useState } from "react";
+import { Button, Form, Input, message } from "antd";
 import { IFormValues } from "./form";
 import { useAddUser, useUpdateUser } from "./actions/form.mutation";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useUpdate } from "./actions/form.query";
 
 const FormComponent = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const user_id = parseInt(searchParams.get("id")) || 0;
-  const name = searchParams.get("name") || "";
-  const age = parseInt(searchParams.get("age")) || 0;
-  const email = searchParams.get("email") || "";
+
   const onFinishFailed = (errorInfo: any) => {
     console.log("Failed:", errorInfo);
   };
-  const [formData, setFormData] = useState<IFormValues>({ name, age, email });
-
-  const navigate = useNavigate();
+  const [form] = Form.useForm<IFormValues>();
+  const { data, isLoading, isError } = useUpdate(user_id);
   const addUser = useAddUser();
-  const updateUser = useUpdateUser();
+  const updateUser = useUpdateUser(user_id);
+
+  useEffect(() => {
+    if (data && user_id) {
+      console.log(data);
+      console.log(data.name);
+      form.setFieldsValue({
+        name: data.name,
+        email: data.email,
+        age: data.age,
+      });
+    }
+  }, [data,user_id]);
 
   const onSubmit = useCallback(
     (values: IFormValues) => {
@@ -27,15 +38,25 @@ const FormComponent = () => {
       } else {
         addUser.mutate(values);
       }
+      showSuccessMessage();
       navigate("/users");
     },
     [addUser, updateUser, user_id]
   );
+  const showSuccessMessage = () => {
+    message.success("Operation successful");
+  };
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
 
+  if (isError) {
+    return <p>Error loading user details</p>;
+  }
   return (
     <Form
       name="basic"
-      initialValues={formData}
+      form={form}
       labelCol={{ span: 8 }}
       wrapperCol={{ span: 16 }}
       style={{ maxWidth: 600 }}

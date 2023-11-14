@@ -23,7 +23,7 @@ const router = createBrowserRouter([
         element: <FormComponent />,
       },
       {
-        path: "/details",
+        path: "/details/:id",
         element: <DetailsComponents />,
       },
     ],
