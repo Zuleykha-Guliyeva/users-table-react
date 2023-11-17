@@ -1,11 +1,12 @@
 import { useMutation, useQueryClient } from "react-query";
 import { addUser, updateUser } from "./form.service";
+import { IFormValues } from "../form";
 
 export const useAddUser = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (user: any) => {
-      return addUser(user);      
+    mutationFn: (user: IFormValues) => {
+      return addUser(user);
     },
     onSuccess: () => {
       queryClient.invalidateQueries("users");
@@ -13,10 +14,10 @@ export const useAddUser = () => {
   });
 };
 
-export const useUpdateUser = (user_id: number) => {
+export const useUpdateUser = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (user: any) => {
+    mutationFn: (user: IFormValues) => {
       return updateUser(user);
     },
     onSuccess: () => {

@@ -1,40 +1,39 @@
+import React from 'react';
 import { Card, Space } from "antd";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDetail } from "./actions/detail.query";
+import useLocalization from "../../assets/lang";
 
 const DetailsComponents = () => {
-  const navigate = useNavigate();
+  const translate = useLocalization();
   const { id } = useParams();
   const user_id = id ? parseInt(id) : undefined;
   const { data, isLoading, isError } = useDetail(user_id);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <p>{translate("loading")}...</p>;
   }
 
   if (isError) {
-    return <p>Error loading user details</p>;
+    return <p>{translate("error")}</p>;
   }
   return (
     <>
       <Space direction="vertical" size={16}>
         <Card
           title="User detail"
-          extra={
-            <a
-              href="#"
-              onClick={() => {
-                navigate("/users");
-              }}
-            >
-              close
-            </a>
-          }
+          extra={<Link to={"/table"}>{translate("close")}</Link>}
           style={{ width: 300 }}
         >
-          <p>adi: {data.name}</p>
-          <p>email: {data.email}</p>
-          <p>yasi: {data.age}</p>
+          <p>
+            {translate("name")}: {data.name}
+          </p>
+          <p>
+            {translate("email")}: {data.email}
+          </p>
+          <p>
+            {translate("age")}: {data.age}
+          </p>
         </Card>
       </Space>
     </>

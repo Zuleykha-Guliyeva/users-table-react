@@ -1,12 +1,12 @@
 import { IFormValues } from "../../form/form";
 
-export default class TableModel {
+export default class DetailModel {
   public user_id: number | null = null;
   public name: string | null = null;
   public email: string | null = null;
   public age: number | null = null;
 
-  constructor(item: any) {
+  constructor(item: IFormValues) {
     this._setId(item);
     this._setName(item);
     this._setEmail(item);
@@ -18,7 +18,7 @@ export default class TableModel {
    * @param id
    * @private
    */
-  private _setId({ user_id }: any) {
+  private _setId({ user_id }: IFormValues) {
     this.user_id = user_id;
   }
 
@@ -27,7 +27,7 @@ export default class TableModel {
    * @param name
    * @private
    */
-  _setName({ name }: any) {
+  _setName({ name }: IFormValues) {
     this.name = name;
   }
 
@@ -36,7 +36,7 @@ export default class TableModel {
    * @param email
    * @private
    */
-  _setEmail({ email }: any) {
+  _setEmail({ email }: IFormValues) {
     this.email = email;
   }
 
@@ -45,7 +45,7 @@ export default class TableModel {
    * @param age
    * @private
    */
-  _setAge({ age }: any) {
+  _setAge({ age }: IFormValues) {
     this.age = age;
   }
 }

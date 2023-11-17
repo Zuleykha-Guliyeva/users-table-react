@@ -1,5 +1,6 @@
 export interface IFormValues {
-    name: string;
-    email: string;
-    age: number;
+  name: string;
+  email: string;
+  age: number;
+  user_id: number;
 }

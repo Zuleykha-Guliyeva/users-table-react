@@ -1,4 +1,5 @@
-import { useDispatch, useSelector, useStore } from "react-redux";
+import React from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import { ILanguages, IState } from "../../../../../store/store";
 import { generateGuid } from "../../../../helpers/generate-guid";
 import { useHeaderStyles } from "./header.style";
@@ -27,7 +28,7 @@ const HeaderComponent = () => {
   }, [currentLang, dispatch]);
 
   const changeLanguage = useCallback(
-    (e: any) => {
+    (e: React.ChangeEvent) => {
       dispatch(setLocale(e.target.value));
     },
     [dispatch]

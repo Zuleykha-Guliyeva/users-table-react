@@ -1,17 +1,13 @@
 import axios from "axios";
+import { IFormValues } from "../form";
 
-export const getUpdateService = async (id: number): Promise<any> => {
+export const addUser = async (user: IFormValues): Promise<IFormValues> => {
   return axios
-  .get(`http://localhost:3000/users/${id}`)
-  .then((res) => res.data);
-};
-export const addUser = async (user: any): Promise<any> => {
-  return axios
-    .post("http://localhost:3000/users/", user)
+    .post(`http://localhost:3000/users`, user)
     .then((res) => res.data);
 };
 
-export const updateUser = async (user: any): Promise<any> => {
+export const updateUser = async (user: IFormValues): Promise<IFormValues> => {
   return axios
     .put(`http://localhost:3000/users/${user.user_id}`, user)
     .then((res) => res.data);

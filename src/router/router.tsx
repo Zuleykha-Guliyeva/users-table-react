@@ -1,13 +1,16 @@
+import React from "react";
 import { createBrowserRouter } from "react-router-dom";
+import { Routes } from "./routes";
 import PublicComponent from "../core/layouts/public/public.component";
 import HomeComponent from "../pages/home/home.component";
-import UsersComponent from "../pages/users/users.component";
 import FormComponent from "../pages/form/form.component";
 import DetailsComponents from "../pages/details/detail.component";
+import TableComponent from "../pages/table/table.component";
+import NotfoundComponent from "../pages/not-found/notfound.component";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: Routes.default,
     element: <PublicComponent />,
     children: [
       {
@@ -15,17 +18,21 @@ const router = createBrowserRouter([
         element: <HomeComponent />,
       },
       {
-        path: "/users",
-        element: <UsersComponent />,
+        path: Routes.table,
+        element: <TableComponent />,
       },
       {
-        path: "/form",
+        path: Routes.form,
         element: <FormComponent />,
       },
       {
-        path: "/details/:id",
+        path: `${Routes.details}/:id`,
         element: <DetailsComponents />,
       },
+      {
+        path: "*",
+        element: <NotfoundComponent />,
+      }
     ],
   },
 ]);

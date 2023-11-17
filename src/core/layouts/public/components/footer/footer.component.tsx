@@ -1,3 +1,4 @@
+import React from 'react';
 import { useFooterStyles } from "./footer.style";
 import useLocalization from "../../../../../assets/lang";
 

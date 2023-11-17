@@ -5,7 +5,6 @@ export interface IState {
     leftMenu: boolean;
     languages: ILanguages[];
     locale: any;
-    user: any | null;
 }
 
 

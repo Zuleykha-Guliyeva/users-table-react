@@ -4,11 +4,7 @@ import {IState} from './store';
 import {useSelector} from 'react-redux';
 
 export const store = configureStore({
-    reducer: rootReducer,
-    middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware({
-            serializableCheck: false,
-        }),
+    reducer: rootReducer
 });
 
 

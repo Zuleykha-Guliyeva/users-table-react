@@ -1,3 +1,4 @@
+import React from 'react';
 import {renderToStaticMarkup} from 'react-dom/server';
 import {az} from './az';
 import {en} from './en';
