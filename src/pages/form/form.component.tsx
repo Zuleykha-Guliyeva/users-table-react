@@ -14,7 +14,6 @@ const FormComponent = () => {
   const searchParams = new URLSearchParams(location.search);
   const searchParamsId = searchParams.get("id");
   const user_id = searchParamsId !== null ? parseInt(searchParamsId) : 0;
-
   const onFinishFailed = (errorInfo: any) => {
     console.log("Failed:", errorInfo);
   };
@@ -49,8 +48,6 @@ const FormComponent = () => {
 
   useEffect(() => {
     if (data && user_id) {
-      console.log(data);
-      console.log(data.name);
       form.setFieldsValue({
         name: data.name,
         email: data.email,
@@ -62,7 +59,7 @@ const FormComponent = () => {
   const onSubmit = useCallback(
     (values: IFormValues) => {
       if (user_id) {
-        updateUser.mutate({ ...values, user_id });
+        updateUser.mutate({ ...values, id: user_id });
       } else {
         addUser.mutate(values);
       }
@@ -97,7 +94,7 @@ const FormComponent = () => {
       </Form.Item>
 
       <Form.Item label="Email" name="email" rules={rules.email}>
-        <Input type="email"/>
+        <Input type="email" />
       </Form.Item>
 
       <Form.Item label="Age" name="age" rules={rules.age}>

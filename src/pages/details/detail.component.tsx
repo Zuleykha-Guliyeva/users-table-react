@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { Card, Space } from "antd";
 import { Link, useParams } from "react-router-dom";
 import { useDetail } from "./actions/detail.query";
@@ -7,7 +7,8 @@ import useLocalization from "../../assets/lang";
 const DetailsComponents = () => {
   const translate = useLocalization();
   const { id } = useParams();
-  const user_id = id ? parseInt(id) : undefined;
+  const safeId: string = id?.toString() || "";
+  const user_id: number = id !== null ? parseInt(safeId) : 0;
   const { data, isLoading, isError } = useDetail(user_id);
 
   if (isLoading) {
@@ -26,13 +27,13 @@ const DetailsComponents = () => {
           style={{ width: 300 }}
         >
           <p>
-            {translate("name")}: {data.name}
+            {translate("name")}: {data?.name}
           </p>
           <p>
-            {translate("email")}: {data.email}
+            {translate("email")}: {data?.email}
           </p>
           <p>
-            {translate("age")}: {data.age}
+            {translate("age")}: {data?.age}
           </p>
         </Card>
       </Space>

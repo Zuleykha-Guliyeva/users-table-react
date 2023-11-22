@@ -1,7 +1,7 @@
 import { IFormValues } from "../../form/form";
 
 export default class DetailModel {
-  public user_id: number | null = null;
+  public id: number | null = null;
   public name: string | null = null;
   public email: string | null = null;
   public age: number | null = null;
@@ -18,8 +18,8 @@ export default class DetailModel {
    * @param id
    * @private
    */
-  private _setId({ user_id }: IFormValues) {
-    this.user_id = user_id;
+  private _setId({ id }: IFormValues) {
+    this.id = id;
   }
 
   /**

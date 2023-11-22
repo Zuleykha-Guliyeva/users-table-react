@@ -2,13 +2,12 @@ import React from 'react';
 import {renderToStaticMarkup} from 'react-dom/server';
 import {az} from './az';
 import {en} from './en';
-import {ru} from './ru';
 import { useStore } from "../../store/store.config";
 
 const useLocalization = () => {
     const languages = useStore('locale');
 
-    return (key: keyof typeof az | keyof typeof en | keyof typeof ru, dynamicValues: any = {}) => {
+    return (key: keyof typeof az | keyof typeof en , dynamicValues: any = {}) => {
 
         let formattedText = languages[key] || '';
         Object.keys(dynamicValues).forEach((dynamicKey: string) => {

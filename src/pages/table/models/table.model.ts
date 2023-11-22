@@ -1,51 +1,31 @@
 import { IFormValues } from "../../form/form";
 
 export default class TableModel {
-  public user_id: number | null = null;
+  public id: number | null = null;
   public name: string | null = null;
   public email: string | null = null;
   public age: number | null = null;
 
-  constructor(item: any) {
-    this._setId(item);
-    this._setName(item);
-    this._setEmail(item);
-    this._setAge(item);
+  constructor(item: IFormValues) {
+    this._setId(item.id);
+    this._setName(item.name);
+    this._setEmail(item.email);
+    this._setAge(item.age);
   }
 
-  /**
-   * set id
-   * @param id
-   * @private
-   */
-  private _setId({ user_id }: any) {
-    this.user_id = user_id;
+  private _setId(id: number | null) {
+    this.id = id;
   }
 
-  /**
-   * set body
-   * @param name
-   * @private
-   */
-  _setName({ name }: any) {
+  private _setName(name: string | null) {
     this.name = name;
   }
 
-  /**
-   * set title
-   * @param email
-   * @private
-   */
-  _setEmail({ email }: any) {
+  private _setEmail(email: string | null) {
     this.email = email;
   }
 
-  /**
-   * set userId
-   * @param age
-   * @private
-   */
-  _setAge({ age }: any) {
+  private _setAge(age: number | null) {
     this.age = age;
   }
 }

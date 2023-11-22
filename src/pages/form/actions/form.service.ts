@@ -9,6 +9,6 @@ export const addUser = async (user: IFormValues): Promise<IFormValues> => {
 
 export const updateUser = async (user: IFormValues): Promise<IFormValues> => {
   return axios
-    .put(`http://localhost:3000/users/${user.user_id}`, user)
+    .put(`http://localhost:3000/users/${user.id}`, user)
     .then((res) => res.data);
 };

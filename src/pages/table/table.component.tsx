@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from "react";
 import { Button, Space, Table } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import { generateGuid } from "../../core/helpers/generate-guid";
@@ -10,16 +10,19 @@ interface DataType {
   key: string;
   name: string;
   age: number;
-  address: string;
-  tags: string[];
+  email: string;
+  id: number;
 }
 
 function TableComponent() {
   const { data, isLoading } = useUsers();
   const { mutate } = usehandleDelete();
-  const handleDelete = (userId: number) => {
-    mutate(userId);
-  };
+  const handleDelete = useCallback(
+    (user_id: number) => {
+      mutate(user_id);
+    },
+    [usehandleDelete]
+  );
 
   const translate = useLocalization();
 
@@ -48,7 +51,7 @@ function TableComponent() {
           <Link to={`/details/${record?.id}`}>
             <button>Details</button>
           </Link>
-          <Link to={`/form?id=${record.id}`}>
+          <Link to={`/form?id=${record?.id}`}>
             <button>Update</button>
           </Link>
           <button onClick={() => handleDelete(record?.id)}>Delete</button>
@@ -63,14 +66,15 @@ function TableComponent() {
       ) : (
         <>
           <Link to={`/form`}>
-            <Button type="primary">
-              Add User
-            </Button>
+            <Button type="primary">Add User</Button>
           </Link>
-          <Button type = "default">Delete</Button>
+          <Button type="default">Delete</Button>
           <Table
             columns={columns}
-            dataSource={data?.map((item) => ({ ...item, key: generateGuid() }))}
+            dataSource={Object.values(data || {}).map((item: DataType) => ({
+              ...item,
+              key: generateGuid(),
+            }))}
           />
         </>
       )}

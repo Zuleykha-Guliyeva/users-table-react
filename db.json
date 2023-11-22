@@ -1,37 +1,30 @@
 {
   "users": [
     {
-      "name": "Bird Ramseyxxx",
-      "email": "necesen@gmail.com",
-      "age": "31",
-      "user_id": 10,
-      "id": 10
-    },
-    {
-      "user_id": 11,
       "name": "Bird Ramse",
       "email": "birdramsey@nimon.commm",
-      "age": "22",
-      "id": 11
+      "age": "33",
+      "user_id": 2,
+      "id": 2
     },
     {
-      "user_id": 13,
       "name": "gunel",
-      "email": "gghg@gmail.com",
-      "age": "39",
-      "id": 13
+      "email": "guni@gmail.com",
+      "age": "30",
+      "id": 3
     },
     {
-      "name": "salam",
-      "email": "necesen@gmail.com",
-      "age": "5",
-      "id": 14
+      "name": "fuad",
+      "email": "fuadd@gmail.com",
+      "age": "27",
+      "id": 5
     },
     {
-      "name": "ferd",
-      "email": "gghghgghg@lff.vom",
-      "age": "5",
-      "id": 16
+      "name": "fateh",
+      "email": "fateh@gmail.com",
+      "age": "10",
+      "user_id": 6,
+      "id": 6
     }
   ]
 }

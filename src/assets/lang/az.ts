@@ -18,4 +18,9 @@ export const az = {
   name: "Ad",
   email: "Poçt",
   age: "Yaş",
+  //404
+  notFound: "İstediğiniz səhifə tapılmadı!",
+  back: "Geri",
+  //pages
+  home:"Ana Səhifə",
 };

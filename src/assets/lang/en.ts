@@ -18,4 +18,9 @@ export const en = {
   name: "Name",
   email: "Email",
   age: "Age",
+  //404
+  notFound: "The page you requested was not found!",
+  back: "Go Back",
+  //pages
+  home: "Home",
 };

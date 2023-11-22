@@ -1,6 +1,8 @@
-import React from 'react'
+import React from "react";
+import useLocalization from "../../assets/lang";
 function HomeComponent() {
-  return <div>home</div>;
+  const translate = useLocalization();
+  return <div>{translate("home")}</div>;
 }
 
 export default HomeComponent;

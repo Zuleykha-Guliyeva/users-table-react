@@ -8,6 +8,6 @@ export const getUsersService = () => {
     return res.data.map((item: IFormValues) => new TableModel(item));
   });
 };
-export const deleteUserService = (userId: number): Promise<IFormValues> => {
-  return axiosInstance.delete(API.users+`/${userId}`).then((res) => res.data);
+export const deleteUserService = (user_id: number): Promise<IFormValues> => {
+  return axiosInstance.delete(API.users + `/${user_id}`);
 };

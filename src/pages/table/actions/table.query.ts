@@ -11,8 +11,8 @@ export const useUsers = () => {
 export const usehandleDelete = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (userId: number) => {
-      return deleteUserService(userId);
+    mutationFn: (user_id: number) => {
+      return deleteUserService(user_id);
     },
     onSuccess: () => {
       queryClient.invalidateQueries("users");
